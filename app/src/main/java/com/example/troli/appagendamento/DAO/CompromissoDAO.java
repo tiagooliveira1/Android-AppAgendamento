@@ -22,6 +22,9 @@ public interface CompromissoDAO {
     @Query("SELECT * from Compromisso")
     public List<Compromisso> findAll();
 
+    @Query("SELECT * from Compromisso where data = :data")
+    public List<Compromisso> findByDate(long data);
+
     @Query("SELECT * FROM Compromisso where _id == :id")
     public Compromisso findByID(long id);
 
