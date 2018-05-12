@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ListagemActivity extends Activity {
 
-    private ListView listaSistemas;
+    private ListView listaCompromissos;
     private CompromissoAdapter myAdapter;
     CompromissoDAO compromissoDAO;
     AppDatabase app;
@@ -32,20 +32,21 @@ public class ListagemActivity extends Activity {
 
     public void carregarElementos(){
 
-        listaSistemas = (ListView) findViewById(R.id.listCompromissos);
+        listaCompromissos = (ListView) findViewById(R.id.listCompromissos);
 
-        List<Compromisso> sistemas = compromissoDAO.findAll();
+        List<Compromisso> compromissos = compromissoDAO.findAll();
 
-        myAdapter = new CompromissoAdapter(this,R.layout.item_compromisso_listagem,sistemas);
-        listaSistemas.setAdapter(myAdapter);
-        listaSistemas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        myAdapter = new CompromissoAdapter(this,R.layout.item_compromisso_listagem,compromissos);
+        listaCompromissos.setAdapter(myAdapter);
+        listaCompromissos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Compromisso compromisso = (Compromisso) parent.getItemAtPosition(position);
-                //Intent atualizarIntent = new Intent(ListagemActivity.this,AtualizarSistemaActivity.class);
-                //atualizarIntent.putExtra("ID_LIVRO",sistema.getID());
-                //startActivity(atualizarIntent);
+                Compromisso compromisso = (Compromisso)parent.getItemAtPosition(position);
+                Intent atualizarIntent = new Intent(ListagemActivity.this,AtualizarCompromissoActivity.class);
+                atualizarIntent.putExtra("ID_COMPROMISSO",compromisso.get_id());
+                startActivity(atualizarIntent);
             }
         });
+
     }
 }

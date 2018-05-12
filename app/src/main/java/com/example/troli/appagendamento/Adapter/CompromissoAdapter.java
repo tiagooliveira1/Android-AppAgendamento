@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.example.troli.appagendamento.DAO.Compromisso;
 import com.example.troli.appagendamento.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,14 +53,15 @@ public class CompromissoAdapter extends ArrayAdapter<Compromisso> {
             textTitulo.setText(compromisso.getTitulo());
         }
         if(textData != null){
+            String dateString = new SimpleDateFormat("dd/MM/yyyy").format(new Date(compromisso.getData()));
             //long teste = compromisso.getData();
-            //textData.setText(teste.toString());
+            textData.setText(dateString);
         }
         if(textDescricao != null){
             textDescricao.setText(compromisso.getDescricao());
         }
         if(textPrioridade != null){
-            textPrioridade.setText(compromisso.getPrioridade());
+            //textPrioridade.setText(compromisso.getPrioridade());
             //Integer.parseInt(compromisso.getPrioridade().toString()).toString();
         }
         return mView;

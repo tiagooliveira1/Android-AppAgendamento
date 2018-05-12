@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.CadastroCompromissoActivity" />
-        <activity android:name=".Activity.ListagemActivity"></activity>
+        <activity android:name=".Activity.ListagemActivity" />
+        <activity android:name=".Activity.AtualizarCompromissoActivity"></activity>
     </application>
 
 </manifest>
