@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
+import android.widget.Toast;
 
 import com.example.troli.appagendamento.R;
 import com.facebook.stetho.Stetho;
@@ -20,6 +21,17 @@ public class MainActivity extends Activity {
         Stetho.initializeWithDefaults(this);
 
         calendarViewBusca = (CalendarView) findViewById(R.id.calendarioDataBuscar);
+
+        calendarViewBusca.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month,
+                                            int dayOfMonth) {
+                realizarBusca(view);
+                //Toast.makeText(getApplicationContext(), "" + dayOfMonth, 0).show();// TODO Auto-generated method stub
+
+            }
+        });
     }
 
     public void verCadastrarCompromisso(View v){
